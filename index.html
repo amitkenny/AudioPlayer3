@@ -5,16 +5,33 @@
 <meta name="robots" content="noindex" />
 <meta name="viewport" content="width=500, initial-scale=1">
 <script type="text/javascript" src="scripts/soundmanager2.js"></script>
-<script src="scripts/bar-ui.js"></script>
+<script type="text/javascript" src="scripts/inlineplayer.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css"></script>
-<link rel="stylesheet" href="css/bar-ui.css" />
-<link rel="stylesheet" href="css/page.css" />
+<link rel="stylesheet" href="css/inlineplayer.css" />
+<link rel="stylesheet" href="css/flashblock.css"/>
+<style type="text/css">
 
-<!-- demo for this page only, you don't need this stuff -->
-<script src="scripts/demo.js"></script>
-<link rel="stylesheet" href="css/demo.css" />
+/*
 
+ -------------------------------------------------------------
+
+ In-page demo CSS - see external CSS for actual relevant stuff.
+
+ --------------------------------------------------------------
+
+ */
+
+#soundmanager-debug {
+ /* SM2 debug container (optional, makes debug more useable) */
+ position:absolute;position:fixed;*position:absolute;bottom:10px;right:10px;width:50em;height:18em;overflow:auto;background:#fff;margin:1em;padding:1em;border:1px solid #999;font-family:"lucida console",verdana,tahoma,"sans serif";font-size:x-small;line-height:1.5em;opacity:0.9;filter:alpha(opacity=90);
+}
+
+body {
+ font:75% normal verdana,arial,tahoma,"sans serif";
+}
+
+</style>
 </head>
 
 <body  class="text-center">
@@ -22,134 +39,27 @@
        <header class="masthead mb-auto">
          <div class="inner">
            <h3 class="masthead-brand">
-             Harvest Ministries
+            <img src="image/harvestlogowebsite.png" width="40%">
+           </h3>
          </div>
        </header>
 
        <main role="main" class="inner cover">
          <h3 class="text-dark">Teachings from the Word of God</h3>
 
-         <div class="sm2-bar-ui playlist-open">
-
-          <div class="bd sm2-main-controls">
-
-           <div class="sm2-inline-texture"></div>
-           <div class="sm2-inline-gradient"></div>
-
-           <div class="sm2-inline-element sm2-button-element">
-            <div class="sm2-button-bd">
-             <a href="#play" class="sm2-inline-button sm2-icon-play-pause">Play / pause</a>
-            </div>
-           </div>
-
-           <div class="sm2-inline-element sm2-inline-status">
-
-            <div class="sm2-playlist">
-             <div class="sm2-playlist-target">
-              <!-- playlist <ul> + <li> markup will be injected here -->
-              <!-- if you want default / non-JS content, you can put that here. -->
-              <noscript><p>JavaScript is required.</p></noscript>
-             </div>
-            </div>
-
-            <div class="sm2-progress">
-             <div class="sm2-row">
-             <div class="sm2-inline-time">0:00</div>
-              <div class="sm2-progress-bd">
-               <div class="sm2-progress-track">
-                <div class="sm2-progress-bar"></div>
-                <div class="sm2-progress-ball"><div class="icon-overlay"></div></div>
-               </div>
-              </div>
-              <div class="sm2-inline-duration">0:00</div>
-             </div>
-            </div>
-
-           </div>
-
-           <div class="sm2-inline-element sm2-button-element sm2-volume">
-            <div class="sm2-button-bd">
-             <span class="sm2-inline-button sm2-volume-control volume-shade"></span>
-             <a href="#volume" class="sm2-inline-button sm2-volume-control">volume</a>
-            </div>
-           </div>
-
-           <div class="sm2-inline-element sm2-button-element">
-            <div class="sm2-button-bd">
-             <a href="#prev" title="Previous" class="sm2-inline-button sm2-icon-previous">&lt; previous</a>
-            </div>
-           </div>
-
-           <div class="sm2-inline-element sm2-button-element">
-            <div class="sm2-button-bd">
-             <a href="#next" title="Next" class="sm2-inline-button sm2-icon-next">&gt; next</a>
-            </div>
-           </div>
-
-           <div class="sm2-inline-element sm2-button-element sm2-menu">
-            <div class="sm2-button-bd">
-              <a href="#menu" class="sm2-inline-button sm2-icon-menu">menu</a>
-            </div>
-           </div>
-
+          <div id="sm2-container">
+           <!-- SM2 flash goes here -->
           </div>
 
-          <div class="bd sm2-playlist-drawer sm2-element">
+          <ul class="graphic list-styled">
 
-           <div class="sm2-inline-texture">
-            <div class="sm2-box-shadow"></div>
-           </div>
+           <li class="h5"><a href="https://harvestministries.nyc3.digitaloceanspaces.com/The%20Love%20of%20God%20-%201st%20Oct%202017.mp3">The Love of God</a></li>
+           <li class="h5"><a href="https://harvestministries.nyc3.digitaloceanspaces.com/The%20Confession%20of%20Hope%20-%201st%20Oct%202017.mp3">The Confession of Hope</a></li>
+           <li class="h5"><a href="https://harvestministries.nyc3.digitaloceanspaces.com/The%20Foolishness%20of%20the%20Cross%20-%208th%20Oct%202017.mp3">The Foolishness of the Cross</a></li>
+           <li class="h5"><a href="https://harvestministries.nyc3.digitaloceanspaces.com/Understanding%20the%20Deceiver%20-%208th%20Oct%202017.mp3">Understanding the Deceiver</a></li>
+           <li class="h5"><a href="https://harvestministries.nyc3.digitaloceanspaces.com/Calming%20the%20Storm%20-%2022nd%20Oct%202017.mp3">Calming the Storm</a></li>
+          </ul>
 
-           <!-- playlist content is mirrored here -->
-
-           <div class="sm2-playlist-wrapper">
-
-             <ul class="sm2-playlist-bd">
-
-              <!-- item with "download" link -->
-
-
-              <!-- standard one-line items -->
-              <li class="font-weight-bold"><a href="https://harvestministries.nyc3.digitaloceanspaces.com/The%20Love%20of%20God%20-%201st%20Oct%202017.mp3">The Love of God</a></li>
-              <li class="font-weight-bold"><a href="https://harvestministries.nyc3.digitaloceanspaces.com/The%20Foolishness%20of%20the%20Cross%20-%208th%20Oct%202017.mp3">The Foolishness of the Cross</a></li>
-              <li class="font-weight-bold"><a href="https://harvestministries.nyc3.digitaloceanspaces.com/The%20Confession%20of%20Hope%20-%201st%20Oct%202017.mp3">The Confession of Hope</a></li>
-              <li class="font-weight-bold"><a href="https://harvestministries.nyc3.digitaloceanspaces.com/Understanding%20the%20Deceiver%20-%208th%20Oct%202017.mp3">Understanding the Deceiver</a></li>
-              <li class="font-weight-bold"><a href="https://harvestministries.nyc3.digitaloceanspaces.com/Calming%20the%20Storm%20-%2022nd%20Oct%202017.mp3">Calming the Storm</a></li>
-
-             </ul>
-
-           </div>
-
-           <div class="sm2-extra-controls">
-            <div class="bd">
-             <div class="sm2-inline-element sm2-button-element">
-              <a href="#prev" title="Previous" class="sm2-inline-button sm2-icon-previous">&lt; previous</a>
-             </div>
-
-             <div class="sm2-inline-element sm2-button-element">
-              <a href="#next" title="Next" class="sm2-inline-button sm2-icon-next">&gt; next</a>
-             </div>
-
-             <!-- not implemented -->
-             <!--
-             <div class="sm2-inline-element sm2-button-element disabled">
-              <div class="sm2-button-bd">
-               <a href="#repeat" title="Repeat playlist" class="sm2-inline-button sm2-icon-repeat">&infin; repeat</a>
-              </div>
-             </div>
-
-             <div class="sm2-inline-element sm2-button-element disabled">
-              <a href="#shuffle" title="Shuffle" class="sm2-inline-button sm2-icon-shuffle">shuffle</a>
-             </div>
-             -->
-
-            </div>
-
-           </div>
-
-          </div>
-
-         </div>
        </main>
 
        <footer class="mastfoot mt-auto">
